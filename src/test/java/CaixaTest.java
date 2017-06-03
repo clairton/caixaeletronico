@@ -35,4 +35,19 @@ public class CaixaTest {
         conta.sacar(123.46);
     }
     
+    @Test
+    public void testTranferir(){
+        Conta conta1 = new Conta(43.76);
+        Conta conta2 = new Conta(50.00);
+        conta1.transferir(conta2, 10.11);
+        assertEquals(conta1.getSaldo(), 33.65);
+        assertEquals(conta2.getSaldo(), 60.11);
+    }
+    
+    @Test(expected = RuntimeException.class)
+    public void testTranferirComValorMaiorQueSaldo(){
+        Conta conta1 = new Conta(43.76);
+        Conta conta2 = new Conta(50.00);
+        conta1.transferir(conta2, 44.76);
+    }
 }
