@@ -2,6 +2,9 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,11 +16,25 @@ import java.util.Collection;
  *
  * @author clairton
  */
+@Entity
 public class Conta {
+    
+    @Id
+    private String numero;
     
     private Double saldo = 0.0;
     
+    @Transient
     private Collection<Movimento> movimentacao = new ArrayList<Movimento>();
+    
+    @Deprecated
+    protected Conta(){
+    }
+    
+    public Conta(String numero, Double valor){
+        this(valor);
+        this.numero = numero;
+    }
     
     public Conta(Double saldo){
         this.depositar(saldo);
