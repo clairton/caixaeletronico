@@ -10,10 +10,10 @@
  */
 public class Conta {
     
-    private Double saldo;
+    private Double saldo = 0.0;
     
     public Conta(Double saldo){
-        this.saldo = saldo;
+        this.depositar(saldo);
     }
     
     public Double getSaldo(){
@@ -22,5 +22,22 @@ public class Conta {
     
     public void depositar(Double valor){
         saldo += valor;
+    }
+    
+    public void sacar(Double valor){
+        if(valor > saldo){
+            throw new RuntimeException("Valor maior que saldo");
+        }
+        saldo -= valor;
+    }
+
+    void transferir(Conta conta, Double valor) {
+        conta.depositar(valor);
+        try{
+            sacar(valor);
+        } catch(RuntimeException e){
+            conta.sacar(valor);
+            throw e;
+        }
     }
 }
