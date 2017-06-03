@@ -20,6 +20,7 @@ public class CaixaTest {
         conta.getSaldo();
         conta.depositar(1.3);
         assertEquals(conta.getSaldo(), 6.3);
+        assertEquals(conta.getMovimentacao().size(), 2);
     }
    
     @Test
@@ -27,6 +28,7 @@ public class CaixaTest {
         Conta conta = new Conta(123.45);
         conta.sacar(0.45);
         assertEquals(123.0, conta.getSaldo());
+        assertEquals(conta.getMovimentacao().size(), 2);
     }
     
     @Test(expected = RuntimeException.class)
