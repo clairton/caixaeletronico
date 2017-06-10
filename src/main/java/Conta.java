@@ -2,21 +2,17 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author clairton
- */
 @Entity
+@Table(name = "contas")
 public class Conta {
     
     @Id
@@ -24,7 +20,8 @@ public class Conta {
     
     private Double saldo = 0.0;
     
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "conta_numero")
     private Collection<Movimento> movimentacao = new ArrayList<Movimento>();
     
     @Deprecated

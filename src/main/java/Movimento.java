@@ -1,20 +1,26 @@
 
 import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author clairton
- */
+@Entity
+@Table(name = "movimentos")
 public class Movimento {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Long id;
+    
+    @Column(name = "ocorrido_em")
     private LocalDateTime ocorridoEm;
     
     private Double valor;
+    
+    @Deprecated
+    protected Movimento(){}
     
     public Movimento(LocalDateTime ocorridoEm, Double valor){
         this.ocorridoEm = ocorridoEm;
