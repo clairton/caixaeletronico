@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +18,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "contas")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Conta {
+public class Conta implements Serializable {
+	private static final long serialVersionUID = 1L;
     
     @Id
     private String numero;
@@ -32,13 +34,22 @@ public class Conta {
     protected Conta(){
     }
     
+    public Conta(Double valor){
+        this(valor, LocalDateTime.now());
+    }
+    
     public Conta(String numero, Double valor){
-        this(valor);
+        this(valor, LocalDateTime.now());
         this.numero = numero;
     }
     
-    public Conta(Double saldo){
-        this.depositar(saldo);
+    public Conta(String numero, Double valor, LocalDateTime ocorridoEm){
+        this(valor, ocorridoEm);
+        this.numero = numero;
+    }
+    
+    public Conta(Double saldo, LocalDateTime ocorridoEm){
+        this.depositar(saldo, ocorridoEm);
     }
     
     public Double getSaldo(){
@@ -46,8 +57,12 @@ public class Conta {
     }
     
     public void depositar(Double valor){
+        depositar(valor, LocalDateTime.now());
+    }
+    
+    public void depositar(Double valor, LocalDateTime ocorridoEm){
         saldo += valor;
-        Movimento movimento = new Movimento(LocalDateTime.now(), valor);
+        Movimento movimento = new Movimento(ocorridoEm, valor);
         movimentacao.add(movimento);
     }
     

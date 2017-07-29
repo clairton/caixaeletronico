@@ -22,6 +22,18 @@
 		    <version>2.2.12</version>
 		    <scope>provided</scope>
 		</dependency>
+    	<dependency>
+	        <groupId>javax.ws.rs</groupId>
+	        <artifactId>javax.ws.rs-api</artifactId>
+	        <version>2.0.1</version>
+            <scope>provided</scope>
+	    </dependency>
+	    <dependency>
+	    	<groupId>javax.ejb</groupId>
+		    <artifactId>ejb-api</artifactId>
+		    <version>3.0</version>
+            <scope>provided</scope>
+		</dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -40,5 +52,36 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-json</artifactId>
+    <version>1.19.4</version>
+</dependency>
+        
+        
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+			<version>2.25.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.25.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.test-framework</groupId>
+			<artifactId>jersey-test-framework-core</artifactId>
+			<version>2.25.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+			<artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+			<version>2.25.1</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 </project>

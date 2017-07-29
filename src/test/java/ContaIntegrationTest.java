@@ -13,7 +13,7 @@ public class ContaIntegrationTest {
 
         configuracoes.put("javax.persistence.jdbc.driver", "org.hsqldb.jdbcDriver");
         configuracoes.put("javax.persistence.schema-generation.database.action", "drop-and-create");
-	configuracoes.put("javax.persistence.validation.mode", "AUTO");
+        configuracoes.put("javax.persistence.validation.mode", "AUTO");
         configuracoes.put("javax.persistence.jdbc.url", "jdbc:hsqldb:file:target/test;hsqldb.lock_file=false;create=true");
         configuracoes.put("javax.persistence.jdbc.user", "sa");
         configuracoes.put("javax.persistence.jdbc.password", "");
