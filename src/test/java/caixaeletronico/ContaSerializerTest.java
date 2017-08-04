@@ -1,3 +1,4 @@
+package caixaeletronico;
 import static org.junit.Assert.assertEquals;
 
 import java.io.StringWriter;
@@ -8,6 +9,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import org.junit.Test;
+
+import caixaeletronico.Conta;
 
 public class ContaSerializerTest {
 

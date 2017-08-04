@@ -1,6 +1,9 @@
+package caixaeletronico;
 
 import static junit.framework.TestCase.assertEquals;
 import org.junit.Test;
+
+import caixaeletronico.Conta;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

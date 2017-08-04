@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
     <persistence-unit name="caixaeletronico" transaction-type="RESOURCE_LOCAL">
-        <class>Conta</class>
-        <class>Movimento</class>
+        <class>caixaeletronico.Conta</class>
+        <class>caixaeletronico.Movimento</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
         	<property name="javax.persistence.schema-generation.database.action" value="create" />

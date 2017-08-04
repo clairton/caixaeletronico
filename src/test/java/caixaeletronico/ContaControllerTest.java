@@ -1,3 +1,4 @@
+package caixaeletronico;
 import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
@@ -15,6 +16,9 @@ import org.glassfish.jersey.test.JerseyTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import caixaeletronico.CaixaEletronicoApi;
+import caixaeletronico.Conta;
+
 public class ContaControllerTest extends JerseyTest{
 	
 	@BeforeClass
@@ -22,7 +26,7 @@ public class ContaControllerTest extends JerseyTest{
 	    EntityManagerFactory factory = Persistence.createEntityManagerFactory("caixaeletronico");
 	    EntityManager manager = factory.createEntityManager();
 	    
-	    String numero = "123";
+	    String numero = "789";
 	    
 	    if(manager.find(Conta.class, numero) == null){
 	    	LocalDateTime ocorridoEm = LocalDateTime.of(2001, 1, 1, 1, 1, 1);
@@ -43,13 +47,13 @@ public class ContaControllerTest extends JerseyTest{
 
 	@Test
 	public void testBuscar() throws Exception{
-		String url = "http://localhost:9998/contas/123";
+		String url = "http://localhost:9998/contas/789";
 		
 		URL obj = new URL(url);
 		HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 		connection.setRequestMethod("GET");
-//		connection.setRequestProperty("Content-Type", "application/json");
-//		connection.addRequestProperty("Accept", "application/json");
+		connection.setRequestProperty("Content-Type", "application/json");
+		connection.addRequestProperty("Accept", "application/json");
 		assertEquals(200, connection.getResponseCode());
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -59,7 +63,7 @@ public class ContaControllerTest extends JerseyTest{
 			response.append(inputLine);
 		}
 		in.close();
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><conta><numero>123</numero><saldo>10.0</saldo><movimentacao><id>1</id><ocorridoEm>2001-01-01T01:01:01</ocorridoEm><valor>10.0</valor></movimentacao></conta>", response.toString());
+		assertEquals("{\"numero\":\"789\",\"saldo\":10.0,\"movimentacao\":[{\"id\":2,\"ocorridoEm\":\"2001-01-01T01:01:01\",\"valor\":10.0}]}", response.toString());
 	}
 	
 }

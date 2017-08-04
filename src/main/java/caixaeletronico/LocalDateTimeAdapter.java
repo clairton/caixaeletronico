@@ -1,3 +1,4 @@
+package caixaeletronico;
 import java.time.LocalDateTime;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;

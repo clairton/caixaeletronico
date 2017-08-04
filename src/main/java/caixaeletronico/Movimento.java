@@ -1,3 +1,4 @@
+package caixaeletronico;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
